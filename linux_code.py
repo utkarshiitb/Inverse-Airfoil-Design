@@ -126,13 +126,19 @@ def algorithm(target_cp, current_cp, airfoil_xy, mach):
 #step2: calculating slopes of the normals
     slope = []
     for i in range(len(target_cp)-1):
-        slope.append((airfoil_xy[1][i+1]-airfoil_xy[1][i])/(airfoil_xy[0][i+1]-airfoil_xy[0][i]))
+        if airfoil_xy[0][i+1]-airfoil_xy[0][i] == 0:
+            slope.append(1)
+        else:
+            slope.append((airfoil_xy[1][i+1]-airfoil_xy[1][i])/(airfoil_xy[0][i+1]-airfoil_xy[0][i]))
+
         
 #think about the last point
 #step3: calculating the virtual velocities
     virtual_y = []
     for i in range(len(target_cp)-1):
         diff = (target_press[i] - current_press[i])/rho
+        if slope[i] == 0:
+           slope[i] = 1
         if i == 0:
             virtual_y.append(0)
         if i!=0 and diff <= 0: 

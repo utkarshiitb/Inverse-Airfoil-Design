@@ -18,7 +18,7 @@ run *sudo apt-get install xfoil* in terminal
 2) Make sure that it has Modified.csv file is present  
 3) Run linux_code.py  
 4) Wait for the iterations  to complete  
-5) After iterations are completed Airfoils and C*p* id automatically generated  
-6) **Important** In order to again run the code delete modifiedCP.csv, n0009CP.csv and n0015Cp.csv and put a new copy of Modified.csv and run the main code (Plots will be automatically replaced)  
+5) After iterations are completed Airfoils and C*p* plots will automatically generate  
+6) **Important** In order to again run the code delete **Modified.csv ModifiedCP.csv, n0009CP.csv and n0015Cp.csv** and put a new copy of Modified.csv now run the main code (Plots will be automatically replaced)  
 
-*Ignore the Warning for replacing modified.csv by default it automatically replaces it*
+*Ignore the Warning for replacing modified.csv as by default it automatically replaces it*

@@ -237,17 +237,29 @@ target_airfoil = ReadXY('n0009')
 initial_airfoil = ReadXY('n0015')
 modified_x_y = ReadXY('Modified')
 transfered_cp_x = get_cp_on_x(target_cp_x,modified_x_y[0])
-for x in xrange(1,170):
+for x in xrange(1,190):
     current_cp = Xfoil('Modified', '5000000', '0', '0.2')
     modified_x_y = algorithm(transfered_cp_x, current_cp[0], modified_x_y, 0.2)
     create_xy(modified_x_y)
 
-plt.figure()
+fig1 = plt.figure()
 ax = plt.subplot(111)
 ax.plot(modified_x_y[0],modified_x_y[1], label = 'Designed Airfoil')
 ax.plot(target_airfoil[0],target_airfoil[1], label = 'Target Airfoil')
 ax.plot(initial_airfoil[0],initial_airfoil[1], label = 'Initial Airfoil')
 ax.legend()
-plt.show()
+fig1.savefig('result.png')
+
+plot_target_cp = Xfoil('n0009', '5000000' , '0', '0.2')
+plot_initial_cp = Xfoil('n0015', '5000000' , '0', '0.2')
+plot_final_cp = Xfoil('Modified', '5000000' , '0', '0.2')
+
+fig2 = plt.figure(2)
+ax = plt.subplot(111)
+ax.plot(plot_target_cp[1],plot_target_cp[0], label = 'Target Airfoil')
+ax.plot(plot_initial_cp[1],plot_initial_cp[0], label = 'Initial Airfoil')
+ax.plot(plot_final_cp[1],plot_final_cp[0], label = 'Designed Airfoil')
+ax.legend()
+fig2.savefig('cpresult.png')
 
 

@@ -237,7 +237,7 @@ target_airfoil = ReadXY('n0009')
 initial_airfoil = ReadXY('n0015')
 modified_x_y = ReadXY('Modified')
 transfered_cp_x = get_cp_on_x(target_cp_x,modified_x_y[0])
-for x in xrange(1,190):
+for x in xrange(1,170):
     current_cp = Xfoil('Modified', '5000000', '0', '0.2')
     modified_x_y = algorithm(transfered_cp_x, current_cp[0], modified_x_y, 0.2)
     create_xy(modified_x_y)

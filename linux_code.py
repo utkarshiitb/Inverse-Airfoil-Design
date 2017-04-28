@@ -230,13 +230,21 @@ target_airfoil = ReadXY('n0009')                                           #Read
 initial_airfoil = ReadXY('n0015')                                          #Reading X-Y of Initial Airfoil
 modified_x_y = ReadXY('Modified')                                          #Reading X-Y of Modified Airfoil
 transfered_cp_x = get_cp_on_x(target_cp_x,modified_x_y[0])                 #Transfering X coordinates of Modified over Target
+l2array = []
 for x in xrange(1,170):   
     #Running Iteration for 170 times
     current_cp = Xfoil('Modified', '5000000', '0', '0.2')                          #Generating Modified Cp
     modified_x_y = algorithm(transfered_cp_x, current_cp[0], modified_x_y, 0.2)    #Running Alogithm on Modified Cp
     create_xy(modified_x_y)                                                        #Creating New Modified File
+    target_l2_norm = Xfoil('n0009', '5000000' , '0', '0.2')
+    sumi = 0
+    for i in range(1,161):
+    	previous_value = transfered_cp_x
+    	current_value = current_cp[0]
+    	sumi = sumi + (float(current_value[i])-float(previous_value[i]))**2
+    l2array.append(sumi**0.5)
 
-fig1 = plt.figure()
+fig1 = plt.figure(1)
 ax = plt.subplot(111)
 ax.plot(modified_x_y[0],modified_x_y[1], label = 'Designed Airfoil')
 ax.plot(target_airfoil[0],target_airfoil[1], label = 'Target Airfoil')
@@ -256,4 +264,15 @@ ax.plot(plot_final_cp[1],plot_final_cp[0], label = 'Designed Airfoil')
 ax.legend()
 fig2.savefig('cpresult.png')                                               #Saving Cp Plot
 
+normx = []
+for i in range(1,170):
+	normx.append(i)
+
+print(l2array)
+
+fig2 = plt.figure(3)
+ax = plt.subplot(111)
+ax.plot(normx,l2array,'ro',label = 'L2 Norm')
+ax.legend()
+fig2.savefig('l2norm.png')  
 

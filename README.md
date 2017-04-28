@@ -6,8 +6,9 @@ Project is Under [Prof. A M Pradeep](https://www.aero.iitb.ac.in/~ampradeep/), [
 Here is the Airfoil Generated  
 ![alt tag](https://raw.githubusercontent.com/utkarsh17091996/Inverse-Airfoil-Design/master/result.png)  
 Corresponding C*p* Plots  
-![alt tag](https://raw.githubusercontent.com/utkarsh17091996/Inverse-Airfoil-Design/master/cpresult.png)  
-  
+![alt tag](https://raw.githubusercontent.com/utkarsh17091996/Inverse-Airfoil-Design/master/cpresult.png)   
+Corresponding C*p* Plots  
+![alt tag](https://raw.githubusercontent.com/utkarsh17091996/Inverse-Airfoil-Design/master/l2norm.png)  
 # Install Xfoil in Ubuntu 14.04 #  
 
 run *sudo apt-get install xfoil* in terminal   
